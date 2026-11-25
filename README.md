@@ -23,12 +23,12 @@ Components will be introduced as the project reaches each phase; this list descr
 
 | Path | Purpose |
 | --- | --- |
-| `app/` | SUPMOVIES application integration and container assets |
+| `app/` | Integration notes and helper files for SUPMOVIES; application source stays in a controlled fork |
 | `terraform/bootstrap/` | Terraform state and administrative bootstrap resources |
 | `terraform/envs/` | Environment-specific infrastructure configuration |
 | `terraform/modules/` | Reusable Terraform modules |
 | `ansible/` | Host configuration and automation |
-| `jenkins/` | Jenkins pipeline and local CI configuration |
+| `jenkins/` | Jenkins controller and local CI configuration; the app pipeline lives with the SUPMOVIES fork |
 | `helm/` | Helm charts for application components |
 | `gitops/` | Argo CD and GitOps configuration |
 | `observability/` | Metrics, dashboards, alerting, and SLO material |
@@ -51,15 +51,15 @@ Work proceeds in stages so each layer can be exercised locally before adding clo
 
 1. Establish repository, secret-scanning, documentation, and cost-control foundations.
 2. Set up WSL2 as the Linux workspace, then run Ansible, Jenkins, and local Kubernetes there. Vagrant is not part of the current plan.
-3. Build Jenkins CI and add DevSecOps checks.
-4. Bootstrap Terraform state and provision the cost-controlled GCP environment.
-5. Package workloads with Helm and deploy through Argo CD.
+3. Configure Jenkins to build from the controlled SUPMOVIES fork, then add CI and DevSecOps checks.
+4. Package the app with Helm and use Argo CD to deploy it to local Kubernetes from GitOps configuration.
+5. After the local delivery workflow works, prepare GCP budgets and remote Terraform state, then use Terraform for the zonal workload environment. Deploy the same versioned app image and Helm configuration there.
 6. Add observability, SLOs, and actionable alerting.
 7. Exercise reliability scenarios and publish runbooks, a postmortem, and portfolio documentation.
 
 ## Local setup
 
-The initial foundation does not yet include the application or local platform configuration. Setup instructions will be added with the relevant phase so commands match the implemented state.
+The SUPMOVIES source is maintained in a controlled fork of the team repository. Local setup instructions for Jenkins, Kubernetes, and the app integration will be added with the relevant phase so commands match the implemented state.
 
 ## Security
 
