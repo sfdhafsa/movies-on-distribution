@@ -1,12 +1,12 @@
 # Movies on Distribution
 
-An SRE and DevOps portfolio project built around the SUPINFO team application SUPCONTENT/SUPMOVIES. The project will develop a production-style delivery and operations platform for a Node.js/Express and React application, with PostgreSQL as its data store.
+An SRE and DevOps portfolio project built around the SUPINFO team application SUPCONTENT/SUPMOVIES. The application source for this project is maintained in the controlled [supmovies-sre repository](https://github.com/sfdhafsa/supmovies-sre). The project will develop a production-style delivery and operations platform for a Node.js/Express and React application, with PostgreSQL as its data store.
 
 The goal is to demonstrate how an application can be built, delivered, operated, observed, and recovered—not just how to provision infrastructure.
 
 ## Project status
 
-**Current phase:** foundations. The repository currently contains the initial project structure, secret scanning, and the first cost-control decision record. Application and infrastructure automation are planned work.
+**Current phase:** foundations. The controlled application repository has been selected. This SRE repository currently contains the initial project structure, secret scanning, and the first cost-control decision record; application delivery and infrastructure automation are still planned work.
 
 ## Planned platform
 
@@ -23,12 +23,12 @@ Components will be introduced as the project reaches each phase; this list descr
 
 | Path | Purpose |
 | --- | --- |
-| `app/` | Integration notes and helper files for SUPMOVIES; application source stays in a controlled fork |
+| `app/` | Integration notes and helper files; application source stays in the controlled [supmovies-sre repository](https://github.com/sfdhafsa/supmovies-sre) |
 | `terraform/bootstrap/` | Terraform state and administrative bootstrap resources |
 | `terraform/envs/` | Environment-specific infrastructure configuration |
 | `terraform/modules/` | Reusable Terraform modules |
 | `ansible/` | Host configuration and automation |
-| `jenkins/` | Jenkins controller and local CI configuration; the app pipeline lives with the SUPMOVIES fork |
+| `jenkins/` | Jenkins controller and local CI configuration; CI will build the app from the controlled repository |
 | `helm/` | Helm charts for application components |
 | `gitops/` | Argo CD and GitOps configuration |
 | `observability/` | Metrics, dashboards, alerting, and SLO material |
@@ -51,7 +51,7 @@ Work proceeds in stages so each layer can be exercised locally before adding clo
 
 1. Establish repository, secret-scanning, documentation, and cost-control foundations.
 2. Set up WSL2 as the Linux workspace, then run Ansible, Jenkins, and local Kubernetes there. Vagrant is not part of the current plan.
-3. Configure Jenkins to build from the controlled SUPMOVIES fork, then add CI and DevSecOps checks.
+3. Configure Jenkins to build from the controlled [supmovies-sre repository](https://github.com/sfdhafsa/supmovies-sre), then add CI and DevSecOps checks.
 4. Package the app with Helm and use Argo CD to deploy it to local Kubernetes from GitOps configuration.
 5. After the local delivery workflow works, prepare GCP budgets and remote Terraform state, then use Terraform for the zonal workload environment. Deploy the same versioned app image and Helm configuration there.
 6. Add observability, SLOs, and actionable alerting.
@@ -59,7 +59,7 @@ Work proceeds in stages so each layer can be exercised locally before adding clo
 
 ## Local setup
 
-The SUPMOVIES source is maintained in a controlled fork of the team repository. Local setup instructions for Jenkins, Kubernetes, and the app integration will be added with the relevant phase so commands match the implemented state.
+The SUPMOVIES source is maintained in the controlled [supmovies-sre repository](https://github.com/sfdhafsa/supmovies-sre), under `SUPCONTENT/`. Local setup instructions for Jenkins, Kubernetes, and the app integration will be added with the relevant phase so commands match the implemented state.
 
 ## Security
 
