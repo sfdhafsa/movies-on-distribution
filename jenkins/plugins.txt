@@ -1,2 +1,10 @@
+# Configuration as Code and Job DSL create the Jenkins job from versioned config.
+configuration-as-code:2148.v9d0c041b_a_13c
+job-dsl:3752.vb_199526b_20c3
+
+# Git checkout and Jenkins Pipeline runtime for the app repository's Jenkinsfile.
+git:5.11.0
+workflow-aggregator:608.v67378e9d3db_1
+
 # Docker Pipeline support for Jenkinsfile Docker agents.
 docker-workflow:653.v2f2c08eff0ec

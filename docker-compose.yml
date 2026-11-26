@@ -27,6 +27,7 @@ services:
       docker:
         condition: service_healthy
     environment:
+      CASC_JENKINS_CONFIG: /var/jenkins_home/jenkins.yaml
       DOCKER_HOST: tcp://docker:2376
       DOCKER_CERT_PATH: /certs/client
       DOCKER_TLS_VERIFY: "1"
@@ -36,6 +37,10 @@ services:
       - jenkins-home:/var/jenkins_home
       - jenkins-workspace:/var/jenkins_home/workspace
       - docker-certs:/certs/client:ro
+      - type: bind
+        source: ./jenkins/jenkins.yaml
+        target: /var/jenkins_home/jenkins.yaml
+        read_only: true
     restart: unless-stopped
 
 volumes:

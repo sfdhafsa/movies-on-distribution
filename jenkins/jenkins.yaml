@@ -1,0 +1,18 @@
+jobs:
+  - script: |
+      pipelineJob('supmovies-backend-tests') {
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('https://github.com/sfdhafsa/supmovies-sre.git')
+                }
+                branch('*/ci/jenkins-backend-tests')
+              }
+            }
+            scriptPath('Jenkinsfile')
+            lightweight()
+          }
+        }
+      }
